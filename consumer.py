@@ -41,7 +41,7 @@ except:
 while(True):
   # Run the DHT program to get the humidity and temperature readings!
 
-  output = subprocess.check_output(["tshark", "-i", "mon0", "subtype", "probereq", "-T", "fields", "-e", "wlan.sa", "-c", "10"]);
+  output = subprocess.check_output(["tshark", "-i", "mon0", "subtype", "probereq", "and", "not", "wlan", "host", "c8:3a:35:c8:e5:fb", "-T", "fields", "-e", "wlan.sa", "-c", "10"]);
   print output
 #  from subprocess import call
 #  output =  call(["tshark", "-i", "mon0", "subtype", "probereq", "-T", "fields", "-e", "frame.time", "-e", "wlan.sa", "-e", "radiotap.dbm_antsignal", "-c", "10"]); 
@@ -76,7 +76,7 @@ while(True):
     worksheet.append_row(values)
   except:
     print "Unable to append data.  Check your connection?"
-    sys.exit()
+    subprocess.call(["sudo", "python", "consumer.py"])
 
   # Wait 30 seconds before continuing
   print "Wrote a row to %s" % spreadsheet
