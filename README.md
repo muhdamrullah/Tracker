@@ -10,6 +10,7 @@ Go to the latest aircrack-ng installation page
     $ sudo airodump-ng-out-update
     $ sudo apt-get install wireshark
     $ sudo apt-get install iw
+    $ sudo apt-get install tshark
 
 Tracks Mobile
 
